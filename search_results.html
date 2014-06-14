@@ -1,0 +1,26 @@
+<div>{{searchMessage}} {{user.name}}</div>
+<div id="search-display">Name: {{user.name}}</div>
+	<div>Location: {{user.location}}</div>
+	<div>Followers: {{user.followers}}</div>
+	<div><img ng-src="http://www.gravatar.com/avatar/{{user.gravatar_id}}" title="{{user.name}}"></div>
+	<select ng-model="sortBy">
+		<option value="+name">Name</option>
+		<option value="-stargazers_count">Stars</option>
+		<option value="+language">Language</option>
+	</select>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Stars</th>
+				<th>Language</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="repo in repos | orderBy: sortBy">
+				<td>{{repo.name}}</td>
+				<td>{{repo.stargazers_count | number}}</td>
+				<td>{{repo.language}}</td>
+			</tr>
+		</tbody>
+	</table>
