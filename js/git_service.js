@@ -22,9 +22,30 @@ var github = function($http) {
 		 			});
 	};
 
+	var getUserRepo = function(user_name, repo_name) {
+		var repo_info = {};
+		var url = 'https://api.github.com/repos/' + user_name + '/' + repo_name;
+		return $http.get(url).then(function(response) {
+						repo_info = response.data;
+						return $http.get(url + '/collaborators').then(function(response) {
+							repo_info.collaborators = response.data;
+							return repo_info;
+						});
+		});
+	};
+
+	// var getHelpers = function(user_name, repo_name) {
+	// 	return $http.get('https://api.github.com/repos/' + user_name + '/' + repo_name + '/collaborators')
+	// 				.then(function(response){
+	// 					return response.data;
+	// 				});
+	// };
+
 	return {
 		getGitUser: getGitUser,
-		getGitRepository: getGitRepository
+		getGitRepository: getGitRepository,
+		getUserRepo: getUserRepo,
+		// getHelpers: getHelpers
 	};
 
 };

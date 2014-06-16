@@ -13,7 +13,7 @@
 				templateUrl: "user.html",
 				controller: "UserCtrl"
 			})
-			.when("/repository_info/:name/:repo_name", {
+			.when("/repository_info/:name/:repo_name/:id/:login", {
 				templateUrl: "repository_info.html",
 				controller: "RepoCtrl"
 			})

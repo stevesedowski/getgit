@@ -1,7 +1,25 @@
 
-<div ng-repeat="info in repository">
-	<div>{{info.id}}</div>
+<div>
+	<div ng-repeat="info in repository"></div>
+		<div>{{info.id}}</div>
+
+		user name:{{user_name}}<br>
+		repo name: {{repo_name}}<br>
+		id: {{id}}<br>
+		login: {{login}}
+		<p>
+			<div>{{repository.id}}</div>
+			<div>Repo Name: {{repo_name}}</div>
+			<div>Author Name: {{repository.owner.login}}</div>
+			<div>Full Name: {{repository.full_name}}</div>
+			<div>Open Issues Count: {{repository.open_issues_count}}</div>
+		</p>
+		<p>{{repository.description}}</p>
+		<div ng-repeat="people in repository.collaborators">
+			<div><img ng-src="{{people.avatar_url}}" class="image-size" /> Collaborator: {{people.login}}</div>
+		</div>
+		<p>
+			<div><a href="#/main">Search Again...</a></div>
+			<div><a href="#/user/{{user_name}}">Back to {{user_name}}'s Repository Info Page</a>
 </div>
-{{user_name}}
-{{repo_name}}
-{{id}}
+
